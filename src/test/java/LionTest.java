@@ -28,18 +28,32 @@ public class LionTest {
     }
 
     @Test
-    public void testGetFood() throws Exception {
+    public void testGetFoodReturnsRightList() throws Exception {
         when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы"));
         lion = new Lion("Самец", feline);
         assertEquals(List.of("Животные", "Птицы"), lion.getFood());
+    }
+
+    @Test
+    public void testGetFoodCallsEatMeat() throws Exception {
+        when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы"));
+        lion = new Lion("Самец", feline);
+        lion.getFood();
         verify(feline).eatMeat();
     }
 
     @Test
-    public void testGetKittens() throws Exception {
+    public void testGetKittensReturnsCorrectNumber() throws Exception {
         when(feline.getKittens()).thenReturn(3);
         lion = new Lion("Самец", feline);
         assertEquals(3, lion.getKittens());
+    }
+
+    @Test
+    public void testGetKittensCallsGetKittens() throws Exception {
+        when(feline.getKittens()).thenReturn(3);
+        lion = new Lion("Самец", feline);
+        lion.getKittens();
         verify(feline).getKittens();
     }
 
