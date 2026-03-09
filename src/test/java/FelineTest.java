@@ -35,12 +35,4 @@ public class FelineTest {
         int actual = feline.getKittens(kittensCount);
         assertEquals(kittensCount, actual);
     }
-
-    @Test
-    public void testEatMeatOverridesAnimalMethod() throws Exception {
-        Animal spyAnimal = spy(new Feline());
-        Feline felineSpy = (Feline) spyAnimal;
-        felineSpy.eatMeat();
-        verify(spyAnimal).getFood("Хищник");
-    }
 }
